@@ -53,4 +53,42 @@ and is trained and evaluated using the **BigPatent dataset**.
 
 ### 2️⃣ Abstractive Summarization
 - Extracted sentences are concatenated
-- Input format:  
+- Input format:
+- - T5 generates fluent abstractive summaries
+
+---
+
+## 🏋️ Training Configuration
+- **Optimizer:** AdamW  
+- **Loss Function:** Cross-Entropy  
+- **Learning Rate:** 2e-4  
+- **Batch Size:** 2  
+- **Epochs:** 3  
+- **Mixed Precision (FP16):** Disabled  
+- **Checkpoint Saving:** Per epoch  
+
+---
+
+## 📊 Evaluation
+- **Metric Used:** BERTScore  
+- Measures semantic similarity between generated and reference summaries  
+
+### Reported Metrics
+- Precision  
+- Recall  
+- F1 Score  
+
+---
+
+## 🚀 Performance
+- **Model load time:** ~3 seconds  
+- **Inference time:** < 1 second per document (GPU)  
+- **Training time:** ~30–40 minutes for 2000 samples (GPU)
+
+---
+
+## 📦 Dependencies
+```bash
+pip install torch transformers datasets spacy pytextrank \
+sentence-transformers bert-score
+
