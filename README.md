@@ -48,18 +48,18 @@ and is trained and evaluated using the **BigPatent dataset**.
 ### 1️⃣ Extractive Summarization
 - Sentence segmentation using **spaCy**
 - Sentence ranking using **TextRank**
-- Sentence embeddings via **Sentence-BERT**
+- Sentence embeddings generated via **Sentence-BERT**
 - Sentence selection using **MMR** to balance relevance and diversity
 
 ### 2️⃣ Abstractive Summarization
-- Extracted sentences are concatenated
-- Input format:
-- - T5 generates fluent abstractive summaries
+- Extracted sentences are concatenated into a single text
+- Input format to T5:
+- T5 generates fluent abstractive summaries
 
 ---
 
 ## 🏋️ Training Configuration
-- **Optimizer:** AdamW  
+- **Optimizer:** AdamW (used internally by HuggingFace Trainer)  
 - **Loss Function:** Cross-Entropy  
 - **Learning Rate:** 2e-4  
 - **Batch Size:** 2  
@@ -73,22 +73,9 @@ and is trained and evaluated using the **BigPatent dataset**.
 - **Metric Used:** BERTScore  
 - Measures semantic similarity between generated and reference summaries  
 
-### Reported Metrics
+### Metrics Reported
 - Precision  
 - Recall  
 - F1 Score  
 
 ---
-
-## 🚀 Performance
-- **Model load time:** ~3 seconds  
-- **Inference time:** < 1 second per document (GPU)  
-- **Training time:** ~30–40 minutes for 2000 samples (GPU)
-
----
-
-## 📦 Dependencies
-```bash
-pip install torch transformers datasets spacy pytextrank \
-sentence-transformers bert-score
-
